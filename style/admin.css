@@ -1,0 +1,220 @@
+body.admin {
+	margin: 0;
+	background: url(../g/pattern_185.png) 0 0 repeat;
+}
+body.admin .content {
+	margin-left: 0;
+	width: auto;
+	height: auto;
+	left: 0;
+	top: 45px;
+	bottom: auto;
+}
+body.admin .content section {
+	top: 65px !important;
+	left: 20px !important;
+	display: block;
+}
+
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; } /* Hides from IE-mac \*/
+.clearfix { display: block; }
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 32px;
+	z-index: 5;
+	padding-bottom: 20px;
+}
+.mainmenu { background: #eee; }
+.mainmenu,
+.mainmenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.mainmenu li {
+	font-family: "Titillium Web";
+	padding: 0;
+}
+.mainmenu > li {
+	position: relative;
+	float: left;
+}
+.mainmenu > li.logout { float: right; }
+.mainmenu > li a,
+.mainmenu > li span {
+	padding: 5px 10px;
+	display: block;
+}
+.mainmenu > li span { cursor: pointer; }
+.mainmenu > li > a,
+.mainmenu > li span { color: #999; }
+.mainmenu > li:hover > a,
+.mainmenu > li.active > a {
+	background: #ccc;
+	color: #000;
+}
+.mainmenu > li > ul {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: auto;
+	display: none;
+	padding: 5px;
+	background: #ccc;
+	border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	-webkit-border-radius: 0 0 3px 3px;
+	box-shadow: 3px 3px 5px #999;
+	-moz-box-shadow: 3px 3px 5px #999;
+	-webkit-box-shadow: 3px 3px 5px #999;
+}
+.mainmenu > li.logout ul {
+	left: auto;
+	right: 0;
+}
+.mainmenu > li:hover > ul { display: block; }
+.mainmenu > li > ul > li a:hover { background: #eee; }
+.admin-form.login { padding: 15px; }
+
+
+/* comment-form */
+
+.admin-form .row {
+	position: relative;
+	padding-bottom: 15px;
+}
+.admin-form legend label,
+.admin-form .row label,
+.admin-form .row input,
+.admin-form .row .select,
+.admin-form .btn input { font-family: "Titillium Web"; }
+.admin-form .row label {
+	font-weight: bold;
+	display: none;
+}
+.admin-form .row input,
+.admin-form .row .select {
+	font-size: 100%;
+	width: 100%;
+	margin: 0 -1px;
+	color: #000;
+	background: #fff;
+	padding: 4px 0;
+	border: #999 solid 1px;
+	border-radius: 3px;
+	text-indent: 5px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	transition: all 0.3s;
+	-o-transition: all 0.3s; /* Opera */
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari and Chrome */
+}
+.admin-form .row textarea {
+	height: 100px;
+	resize: none;
+}
+.admin-form .row textarea {
+	width: 498px;
+	height: 300px;
+}
+
+.admin-form .row input:hover,
+.admin-form .row input:focus {
+	border-color: #1d76c1;
+	box-shadow: 0 0 10px #1d76c1;
+	-moz-box-shadow: 0 0 10px #1d76c1;
+	-webkit-box-shadow: 0 0 10px #1d76c1;
+}
+
+.admin-form.login .row input { width: 150px; }
+.admin-form .btn  { clear: both; }
+.admin-form .btn ul { list-style: none; }
+.admin-form .btn input {
+	margin: 0;
+	border: none;
+	background: transparent;
+}
+.admin-form legend label input[type="radio"] { margin: 0 5px 0 0; }
+.admin-form .row select {
+	position: relative;
+	margin: 0;
+	height: 32px;
+	line-height: 32px;
+	width: 500px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	z-index: 10;
+	cursor: pointer;
+}
+.admin-form .row .select {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.admin-form .row .select:after {
+	position: absolute;
+	content: "";
+	height: 0;
+	width: 0;
+	top: 13px;
+	right: 10px;
+	border: #fff solid 5px;
+	border-top: #222 solid 5px;
+}
+
+.admin-form .btn input {
+	float: left;
+	font-size: 100%;
+	padding: 3px 10px;
+	background: #ccc;
+	margin-right: 10px;
+	border: #999 solid 1px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	transition: all 0.3s;
+	-o-transition: all 0.3s; /* Opera */
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari and Chrome */
+}
+.admin-form .btn input:hover {
+	cursor: pointer;
+	border-color: #1d76c1;
+	box-shadow: 0 0 10px #1d76c1;
+	-moz-box-shadow: 0 0 10px #1d76c1;
+	-webkit-box-shadow: 0 0 10px #1d76c1;
+}
+
+.separate { position: relative; }
+.separate-before:before,
+.separate-after:after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	bottom: 2px;
+	width: 1px;
+	background-color: #ccc;
+}
+.separate-before { margin-left: 1px; }
+.separate-before:before {
+	left: -1px;
+}
+.separate-after { margin-right: 1px; }
+.separate-after:after {
+	right: -1px;
+}
