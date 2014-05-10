@@ -14,20 +14,20 @@ if(isset($_SESSION["username"])) {
 
 		if ($password0 == "" && $password1 == "" && $password2 == "") {
 			echo "<p>HIBA: Kérlek, töltsd ki a mezőket!</p>";
-			header("Refresh: 2 url=index.php?b=pwd");
+			header("refresh: 2 url=index.php?b=pwd");
 		} elseif ($pwd_result_row["password"] != $password0) {
 			echo "<p>HIBA: Nincs ilyen jelszó az adatbázisban!</p>";
-			header("Refresh: 2 url=index.php?b=pwd");
+			header("refresh: 2 url=index.php?b=pwd");
 		} elseif ($password1 != $password2) {
 			echo "<p>HIBA: Nem egyezik meg a két jelszó!</p>";
-			header("Refresh: 2 url=index.php?b=pwd");
+			header("refresh: 2 url=index.php?b=pwd");
 		} else {
 			$query = "UPDATE sys_user SET password='$password' WHERE id='$userid'";
 			mysql_query($query);
-			header("Location: index.php");
+			header("location: index.php");
 		}
 	} elseif(isset($_POST["cancel"])) {
-		header("Location: index.php");
+		header("location: index.php");
 	} else {
 		if(isset($_GET["userid"])) {
 			$userid = $_GET["userid"];
@@ -63,12 +63,12 @@ if(isset($_SESSION["username"])) {
 <?php
 		} else {
 			echo "<p>HIBA: Nincs ilyen felhasználónév! ($username)</p>";
-			header("Refresh: 2 url=index.php");
+			header("refresh: 2 url=index.php");
 		}
 	}
 } else {
 	echo "<p>Nincs jogosultságod adatokat módosítani!</p>";
-	header("Refresh: 2 url=index.php");
+	header("refresh: 2 url=index.php");
 }
 ?>
 </div>

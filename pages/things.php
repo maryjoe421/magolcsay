@@ -21,7 +21,7 @@
 			if ($thingsItem != $lastThingsItem) echo '<hr />';
 		}
 	} else {
-		echo '<p>Jelenleg nincs semmi újdonság a dolgok közt!</p>';
+		echo '<p>Hamarosan...</p>';
 	}
 ?>
 

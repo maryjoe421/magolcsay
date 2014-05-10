@@ -21,7 +21,7 @@
 			if ($workshopItem != $lastWorkshopItem) echo '<hr />';
 		}
 	} else {
-		echo '<p>Jelenleg nincs semmi újdonság a műhelyben!</p>';
+		echo '<p>Hamarosan...</p>';
 	}
 ?>
 

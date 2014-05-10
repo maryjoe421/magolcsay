@@ -9,9 +9,9 @@ if($_SESSION["privilege"] == "admin") {
 		$privilege = htmlspecialchars($_POST["privilege"]);
 		$query = "INSERT INTO sys_user (username, password, email, privilege) VALUES ('$username', '$password', '$email', '$privilege')";
 		mysql_query($query);
-		header("Location: index.php");
+		header("location: index.php");
 	} elseif(isset($_POST["cancel"])) {
-		header("Location: index.php");
+		header("location: index.php");
 	}
 ?>
 <h1>Új felhasználó felvétele</h1>
@@ -47,7 +47,7 @@ if($_SESSION["privilege"] == "admin") {
 <?php
 } else {
 	echo "<p>Nincs jogosultságod új felhasználót felvenni!</p>";
-	header("Refresh: 3 url=index.php");
+	header("refresh: 3 url=index.php");
 }
 ?>
 </div>

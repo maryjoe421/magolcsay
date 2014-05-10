@@ -1,6 +1,5 @@
 <div class="text-content">
 <?php
-
 if($_SESSION["privilege"] == "user") {
 ?>
 	<h1>Fájlok feltöltése</h1>
@@ -12,7 +11,7 @@ if($_SESSION["privilege"] == "user") {
 	$uploader->display();
 } else {
 	echo "<p>Nincs jogosultságod új fájlt feltölteni!</p>";
-	header("Refresh: 3 url=index.php");
+	header("refresh: 3 url=index.php");
 }
 ?>
 </div>

@@ -7,10 +7,10 @@ if (isset($_POST["save"])) {
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) > 0) {
 		$result_row = mysql_fetch_array($result);
+		$_SESSION["userid"] = $result_row["id"];
 		$_SESSION["username"] = $result_row["username"];
 		$_SESSION["privilege"] = $result_row["privilege"];
-		$_SESSION["userid"] = $result_row["id"];
-		header("Location: index.php");
+		header("location: index.php");
 	} else {
 		echo '<p class="warning">Hibás Név / Jelszó!</p>';
 	}

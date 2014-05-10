@@ -9,9 +9,9 @@ if($_SESSION["privilege"] == "admin") {
 		$privilege = htmlspecialchars($_POST["privilege"]);
 		$query = "UPDATE sys_user SET password='$password', email='$email', privilege='$privilege' WHERE id='$id'";
 		mysql_query($query);
-		header("Location: index.php");
+		header("location: index.php");
 	} elseif(isset($_POST["cancel"])) {
-		header("Location: index.php");
+		header("location: index.php");
 	}
 ?>
 <h1>Adatok módosítása</h1>
@@ -58,7 +58,7 @@ if($_SESSION["privilege"] == "admin") {
 <?php
 } else {
 	echo "<p>Nincs jogosultságod az admin menü beállításaihoz!</p>";
-	header("Refresh: 2 url=index.php");
+	header("refresh: 2 url=index.php");
 }
 ?>
 </div>

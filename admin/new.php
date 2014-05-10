@@ -10,10 +10,10 @@ if($_SESSION["privilege"] == "user") {
 		$published = ($p == "publications") ? "1" : "0";
 		$query = "INSERT INTO mng_".$p." (date, title, text, language, published) VALUES ('$date', '$title', '$text', '$language', '$published')";
 		mysql_query($query);
-		header("Location: index.php?b=list&p=$p");
+		header("location: index.php?b=list&p=$p");
 	} elseif(isset($_POST["cancel"])) {
 		$p = $_POST["p"];
-		header("Location: index.php?b=list&p=$p");
+		header("location: index.php?b=list&p=$p");
 	}
 ?>
 	<script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
@@ -72,7 +72,7 @@ if($_SESSION["privilege"] == "user") {
 <?php
 } else {
 	echo "<p>Nincs jogosultságod új bejegyzést írni!</p>";
-	header("Refresh: 2 url=index.php?b=list&p=$p");
+	header("refresh: 2 url=index.php?b=list&p=$p");
 }
 ?>
 </div>
