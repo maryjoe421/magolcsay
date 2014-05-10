@@ -1,14 +1,14 @@
 <div class="text-content">
-
 <?php
-if($_SESSION["privilege"] == "user") {
+
+if(isset($_SESSION["username"])) {
 	if(isset($_POST["save"])) {
-		$username = $_POST["username"];
+		$userid = $_POST["userid"];
 		$password0 = md5($_POST["password0"]);
 		$password1 = md5($_POST["password1"]);
 		$password2 = md5($_POST["password2"]);
 
-		$pwd_query = "SELECT * FROM sys_user WHERE username='$username'";
+		$pwd_query = "SELECT * FROM mng_users WHERE id='$userid'";
 		$pwd_result = mysql_query($pwd_query);
 		$pwd_result_row = mysql_fetch_array($pwd_result);
 
@@ -19,25 +19,24 @@ if($_SESSION["privilege"] == "user") {
 			echo "<p>HIBA: Nem egyezik meg a két jelszó!</p>";
 			header("Refresh: 2 url=index.php?b=pwd");
 		} else {
-			$query = "UPDATE sys_user SET password='$password' WHERE username='$username'";
+			$query = "UPDATE mng_users SET password='$password' WHERE id='$userid'";
 			mysql_query($query);
 			header("Location: index.php");
 		}
 	} elseif(isset($_POST["cancel"])) {
 		header("Location: index.php");
 	} else {
-		if(isset($_GET["username"])) {
-			$username = $_GET["username"];
-			$query = "SELECT * FROM sys_user WHERE username='$username'";
+		if(isset($_GET["userid"])) {
+			$userid = $_GET["userid"];
+			$query = "SELECT * FROM mng_users WHERE id='$userid'";
 			$result = mysql_query($query);
 			$result_row = mysql_fetch_array($result);
 ?>
-
 <h1>Jelszó módosítása</h1>
 <div class="admin-form">
 	<form action="?b=pwd" method="post">
-		<input type="hidden" name="username" value="<?php echo $username?>" />
-		<p><?php echo $result_row["username"] . ' - ' . $result_row ["email"]?></p>
+		<input type="hidden" name="userid" value="<?php echo $userid?>" />
+		<p><?php echo $result_row["username"].' - '.$result_row ["email"]?></p>
 		<div class="row">
 			<label>Jelenlegi jelszó</label>
 			<input type="password" placeholder="Jelenlegi jelszó" name="password0" />
@@ -58,7 +57,6 @@ if($_SESSION["privilege"] == "user") {
 		</div>
 	</form>
 </div>
-
 <?php
 		} else {
 			echo "<p>HIBA: Nincs ilyen felhasználónév! ($username)</p>";
@@ -66,9 +64,8 @@ if($_SESSION["privilege"] == "user") {
 		}
 	}
 } else {
-	echo "<p>Nincs jogosultságod új bejegyzést írni!</p>";
+	echo "<p>Nincs jogosultságod adatokat módosítani!</p>";
 	header("Refresh: 2 url=index.php");
 }
 ?>
-
 </div>

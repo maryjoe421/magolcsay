@@ -1,9 +1,5 @@
 <div class="text-content">
-
 <?php
-
-createFile("file");
-createFile("picture");
 
 if($_SESSION["privilege"] == "user") {
 	if(isset($_POST["save"])) {
@@ -21,7 +17,6 @@ if($_SESSION["privilege"] == "user") {
 		header("Location: index.php?b=list&p=$p");
 	}
 ?>
-
 <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -54,9 +49,7 @@ if($_SESSION["privilege"] == "user") {
 			<label>Cím:</label>
 			<input type="text" placeholder="Cím" name="title" />
 		</div>
-
 <?php } ?>
-
 		<div class="row">
 			<label>Szöveg:</label>
 			<textarea name="text" id="new_entry" rows="" cols=""></textarea>
@@ -83,12 +76,10 @@ if($_SESSION["privilege"] == "user") {
 		</div>
 	</form>
 </div>
-
 <?php
 } else {
 	echo "<p>Nincs jogosultságod új bejegyzést írni!</p>";
 	header("Refresh: 2 url=index.php?b=list&p=$p");
 }
 ?>
-
 </div>

@@ -19,4 +19,6 @@
 	if(!$error)
 		move_uploaded_file($temp_name, $uploadPath . $filename);
 	echo "1";
+	createFile("file");
+	createFile("picture");
 ?>

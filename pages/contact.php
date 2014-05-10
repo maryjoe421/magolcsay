@@ -26,7 +26,7 @@
 			echo $mng_contact_result_row["text"];
 		}
 	} else {
-		echo '<p>Hamarosan...</p>';
+		echo ($lang == "en") ? '<p>Hamarosan...</p>' : '<p>Soon...</p>';
 	}
 ?>
 
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-<?php
+<?
 		}
 	}
 ?>

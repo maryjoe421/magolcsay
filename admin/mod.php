@@ -1,9 +1,5 @@
 <div class="text-content">
-
 <?php
-
-createFile("file");
-createFile("picture");
 
 if($_SESSION["privilege"] == "user") {
 	if(isset($_POST["save"])) {
@@ -34,7 +30,6 @@ if($_SESSION["privilege"] == "user") {
 			$result = mysql_query($query);
 			$result_row = mysql_fetch_array($result);
 ?>
-
 <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -101,7 +96,6 @@ if($_SESSION["privilege"] == "user") {
 		</div>
 	</form>
 </div>
-
 <?php
 		} else {
 			echo "<p>HIBA: Nincs ilyen azonosító! ($id)</p>";
@@ -113,5 +107,4 @@ if($_SESSION["privilege"] == "user") {
 	header("Refresh: 2 url=index.php?b=list&p=$p");
 }
 ?>
-
 </div>

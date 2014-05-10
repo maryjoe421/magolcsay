@@ -407,7 +407,7 @@ section .holder .scroll-pane {
 #ashes_of_cows_container .holder,
 #workshop_container,
 #workshop_container .holder { width: 480px; }
-#contact_container { height: 180px; }
+#contact_container { height: 190px; }
 #ashes_of_cows_container,
 #ashes_of_cows_container .holder {
 	height: 400px;

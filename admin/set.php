@@ -1,22 +1,20 @@
 <div class="text-content">
-
 <?php
-if($_SESSION["privilege"] == "admin") {
+
+if(isset($_SESSION["username"])) {
 	if(isset($_POST["save"])) {
 		$id = $_POST["id"];
 		$password = md5($_POST["password"]);
-		$query = "UPDATE sys_user SET password='$password' WHERE id='$id'";
+		$query = "UPDATE mng_users SET password='$password' WHERE id='$id'";
 		mysql_query($query);
 		header("Location: index.php");
 	}
 ?>
-
 <h1>Jelszó módosítása</h1>
 <div class="admin-form">
 	<form action="?b=set" method="post">
-
 <?php
-		$query = "SELECT * FROM sys_user";
+		$query = "SELECT * FROM mng_users";
 		$result = mysql_query($query);
 		while ($result_row = mysql_fetch_array($result)) {
 ?>
@@ -39,11 +37,9 @@ if($_SESSION["privilege"] == "admin") {
 				<input type="password" placeholder="Új jelszó mégegyszer" name="password" />
 			</div>
 		</fieldset>
-
 <?php
 		}
 ?>
-
 		<div class="btn">
 			<ul>
 				<li><input type="submit" name="save" value="Mentés" /></li>
@@ -51,12 +47,10 @@ if($_SESSION["privilege"] == "admin") {
 		</div>
 	</form>
 </div>
-
 <?php
 } else {
 	echo "<p>Nincs jogosultságod az admin menü beállításaihoz!</p>";
 	header("Refresh: 2 url=index.php");
 }
 ?>
-
 </div>

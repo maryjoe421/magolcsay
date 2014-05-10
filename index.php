@@ -1,7 +1,15 @@
 <?php
-	ob_start();
-	session_start();
-	include("config.php");
+ob_start();
+session_start();
+
+include("config.php");
+include("function.php");
+
+if(isset($_GET["p"])) {
+	$p = $_GET['p'];
+} else {
+	$p = '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +54,7 @@
 
 		<!-- Add your site or application content here -->
 
-<?php include "admin/bar.php"; ?>
+<?php include("admin/bar.php"); ?>
 		<header>
 			<nav>
 				<ul class="menu">

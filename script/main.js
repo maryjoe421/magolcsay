@@ -106,7 +106,7 @@ jQuery(document).ready(function() {
 	});
 
 	// single player popup panel
-	jQuery("a[href^='?']").each(function() {
+	jQuery(".text-content a[href^='?']").each(function() {
 		jQuery(this).wrap('<div class="player-wrapper" />');
 	});
 

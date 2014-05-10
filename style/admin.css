@@ -1,18 +1,18 @@
 body.admin {
 	margin: 0;
-	background: url(../g/pattern_185.png) 0 0 repeat;
+	background: url(../image/pattern_185.png) 0 0 repeat;
 }
 body.admin .content {
 	margin-left: 0;
 	width: auto;
 	height: auto;
 	left: 0;
-	top: 45px;
+	top: 65px;
 	bottom: auto;
 }
 body.admin .content section {
-	top: 65px !important;
-	left: 20px !important;
+	top: 0 !important;
+	left: 30px !important;
 	display: block;
 }
 

@@ -1,6 +1,8 @@
 <?php
 include("../config.php");
+
 $p = $_GET["p"];
+
 if($_SESSION["privilege"] == "user") {
 	if(isset($_GET["id"])) {
 		$id = $_GET["id"];

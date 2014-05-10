@@ -1,20 +1,19 @@
 <div class="text-content">
-
 <?php
+
 if($_SESSION["privilege"] == "admin") {
 	if(isset($_POST["save"])) {
 		$username = htmlspecialchars($_POST["username"]);
 		$password = md5($_POST["password"]);
 		$email = htmlspecialchars($_POST["email"]);
 		$privilege = htmlspecialchars($_POST["privilege"]);
-		$query = "INSERT INTO sys_user (username, password, email, privilege) VALUES ('$username', '$password', '$email', '$privilege')";
+		$query = "INSERT INTO mng_users (username, password, email, privilege) VALUES ('$username', '$password', '$email', '$privilege')";
 		mysql_query($query);
 		header("Location: index.php");
 	} elseif(isset($_POST["cancel"])) {
 		header("Location: index.php");
 	}
 ?>
-
 <h1>Új felhasználó felvétele</h1>
 <div class="admin-form">
 	<form action="?b=user" method="post">
@@ -45,12 +44,10 @@ if($_SESSION["privilege"] == "admin") {
 		</div>
 	</form>
 </div>
-
 <?php
 } else {
 	echo "<p>Nincs jogosultságod új felhasználót felvenni!</p>";
 	header("Refresh: 3 url=index.php");
 }
 ?>
-
 </div>

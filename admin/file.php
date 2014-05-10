@@ -1,13 +1,10 @@
 <div class="text-content">
-
 <?php
 
 if($_SESSION["privilege"] == "user") {
 ?>
-
 	<h1>Fájlok feltöltése</h1>
 	<p>A feltöltendő fájlokat hozd a következő formába <b>more_than_one_word.mp3, tukor_meg_lira.png, stb.</b>, vagyis az elnevezés során ügyelj arra, hogy <b>szóköz</b> illetve <b>ékezetes- és speciális karakter</b> (&amp;, @, #, &lt;, &gt;, $, /, =, stb.) ne legyen benne!<br />Ezek alapján nevezd át kérlek!</p>
-
 <?php
 	require_once "fileupload/class.FlashUploader.php";
 	IAF_display_js();
@@ -18,5 +15,4 @@ if($_SESSION["privilege"] == "user") {
 	header("Refresh: 3 url=index.php");
 }
 ?>
-
 </div>
