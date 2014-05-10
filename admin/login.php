@@ -16,7 +16,8 @@ if (isset($_POST["save"])) {
 	}
 }
 ?>
-	<div class="admin-form">
+	<h1>Bejelentkezés</h1>
+	<div class="admin-form login">
 		<form action="?b=login" method="post">
 			<div class="row">
 				<label>Név:</label>

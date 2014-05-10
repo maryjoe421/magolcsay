@@ -8,15 +8,7 @@
 							<li><a href="../" title="Vissza a '.$_SERVER["SERVER_NAME"].' oldalra">'.$_SERVER["SERVER_NAME"].'</a></li>
 						</ul>
 					</li>';
-		if($_SESSION["privilege"] == "admin") {
-						echo '<li class="separate-after">
-							<span>'.$_SESSION["username"].'('.$_SESSION["privilege"].')</span>
-							<ul>
-								<li><a href="?b=settings">Beállítások</a></li>
-								<li><a href="?b=user">Új felhasználó felvétele</a></li>
-							</ul>
-						</li>';
-		} else {
+		if($_SESSION["privilege"] == "user") {
 			foreach ($editable_menuitems as $key => $value) {
 				$className = ($p == $key) ? ' class="active"' : '';
 				//the code here is impertinent 
@@ -32,8 +24,12 @@
 		}
 		echo '<li class="logout">
 				<span>'.$_SESSION["username"].'('.$_SESSION["privilege"].')</span>
-				<ul>
-					<li><a href="?b=pwd&amp;userid='.$_SESSION["userid"].'">Adatok módosítása</a></li>
+				<ul>';
+			if($_SESSION["privilege"] == "admin") {
+				echo '<li><a href="?b=set">Beállítások</a></li>
+					<li><a href="?b=user">Új felhasználó felvétele</a></li>';
+			}
+					echo '<li><a href="?b=pwd&amp;userid='.$_SESSION["userid"].'">Adatok módosítása</a></li>
 					<li><a href="?b=logout">Kijelentkezés</a></li>
 				</ul>
 			</li>

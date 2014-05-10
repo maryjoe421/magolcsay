@@ -8,6 +8,8 @@ if(isset($_SESSION["username"])) {
 		$query = "UPDATE mng_users SET password='$password' WHERE id='$id'";
 		mysql_query($query);
 		header("Location: index.php");
+	} elseif(isset($_POST["cancel"])) {
+		header("Location: index.php");
 	}
 ?>
 <h1>Jelszó módosítása</h1>
@@ -43,6 +45,7 @@ if(isset($_SESSION["username"])) {
 		<div class="btn">
 			<ul>
 				<li><input type="submit" name="save" value="Mentés" /></li>
+				<li><input type="submit" name="cancel" value="Mégsem" /></li>
 			</ul>
 		</div>
 	</form>

@@ -69,7 +69,7 @@
 			$this->pass_vars	= array();
 			$this->properties	= array(
 									'bg_color'			=> '0xFFFFFF',
-									'set_width'			=> 415,
+									'set_width'			=> 768,
 									'set_height'		=> 54,
 									'valid_extensions'	=> '*.gif, *.jpg, *.png, *.mp3',
 									'extensions_mod'	=> '*.gif; *.jpg; *.png; *.mp3'
