@@ -11,7 +11,6 @@
 		if($_SESSION["privilege"] == "user") {
 			foreach ($editable_menuitems as $key => $value) {
 				$className = ($p == $key) ? ' class="active"' : '';
-				//the code here is impertinent 
 				echo '<li'.$className.'>
 						<a href="?b=list&amp;p='.$key.'">'.$value.'</a>
 						<ul>
@@ -23,13 +22,13 @@
 			echo '<li class="separate-before"><a href="?b=file">Fájl feltöltése</a></li>';
 		}
 		echo '<li class="logout">
-				<span>'.$_SESSION["username"].'('.$_SESSION["privilege"].')</span>
+				<span>'.$_SESSION["username"].' ('.$_SESSION["privilege"].')</span>
 				<ul>';
 			if($_SESSION["privilege"] == "admin") {
-				echo '<li><a href="?b=set">Beállítások</a></li>
+				echo '<li><a href="?b=set">Adatok módosítása</a></li>
 					<li><a href="?b=user">Új felhasználó felvétele</a></li>';
 			}
-					echo '<li><a href="?b=pwd&amp;userid='.$_SESSION["userid"].'">Adatok módosítása</a></li>
+					echo '<li><a href="?b=pwd&amp;userid='.$_SESSION["userid"].'">Jelszó módosítása</a></li>
 					<li><a href="?b=logout">Kijelentkezés</a></li>
 				</ul>
 			</li>

@@ -44,6 +44,11 @@ jQuery(document).ready(function() {
 		});
 	}
 
+	jQuery("fieldset legend label").click(function() {
+		jQuery("fieldset").find(".row").hide();
+		jQuery(this).parent().parent().find(".row").show();
+	});
+
 
 	initScroll(0);
 	stylingSelect();

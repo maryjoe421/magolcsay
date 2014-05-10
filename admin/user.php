@@ -7,7 +7,7 @@ if($_SESSION["privilege"] == "admin") {
 		$password = md5($_POST["password"]);
 		$email = htmlspecialchars($_POST["email"]);
 		$privilege = htmlspecialchars($_POST["privilege"]);
-		$query = "INSERT INTO mng_users (username, password, email, privilege) VALUES ('$username', '$password', '$email', '$privilege')";
+		$query = "INSERT INTO sys_user (username, password, email, privilege) VALUES ('$username', '$password', '$email', '$privilege')";
 		mysql_query($query);
 		header("Location: index.php");
 	} elseif(isset($_POST["cancel"])) {

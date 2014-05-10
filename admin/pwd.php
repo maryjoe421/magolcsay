@@ -8,18 +8,21 @@ if(isset($_SESSION["username"])) {
 		$password1 = md5($_POST["password1"]);
 		$password2 = md5($_POST["password2"]);
 
-		$pwd_query = "SELECT * FROM mng_users WHERE id='$userid'";
+		$pwd_query = "SELECT * FROM sys_user WHERE id='$userid'";
 		$pwd_result = mysql_query($pwd_query);
 		$pwd_result_row = mysql_fetch_array($pwd_result);
 
-		if ($pwd_result_row["password"] != $password0) {
+		if ($password0 == "" && $password1 == "" && $password2 == "") {
+			echo "<p>HIBA: Kérlek, töltsd ki a mezőket!</p>";
+			header("Refresh: 2 url=index.php?b=pwd");
+		} elseif ($pwd_result_row["password"] != $password0) {
 			echo "<p>HIBA: Nincs ilyen jelszó az adatbázisban!</p>";
 			header("Refresh: 2 url=index.php?b=pwd");
 		} elseif ($password1 != $password2) {
 			echo "<p>HIBA: Nem egyezik meg a két jelszó!</p>";
 			header("Refresh: 2 url=index.php?b=pwd");
 		} else {
-			$query = "UPDATE mng_users SET password='$password' WHERE id='$userid'";
+			$query = "UPDATE sys_user SET password='$password' WHERE id='$userid'";
 			mysql_query($query);
 			header("Location: index.php");
 		}
@@ -28,7 +31,7 @@ if(isset($_SESSION["username"])) {
 	} else {
 		if(isset($_GET["userid"])) {
 			$userid = $_GET["userid"];
-			$query = "SELECT * FROM mng_users WHERE id='$userid'";
+			$query = "SELECT * FROM sys_user WHERE id='$userid'";
 			$result = mysql_query($query);
 			$result_row = mysql_fetch_array($result);
 ?>

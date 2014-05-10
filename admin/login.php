@@ -3,7 +3,7 @@
 if (isset($_POST["save"])) {
 	$username = htmlspecialchars($_POST["username"]);
 	$password = md5($_POST["password"]);
-	$query = "SELECT * FROM mng_users WHERE (username='$username' AND password='$password')";
+	$query = "SELECT * FROM sys_user WHERE (username='$username' AND password='$password')";
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) > 0) {
 		$result_row = mysql_fetch_array($result);
