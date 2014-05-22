@@ -31,8 +31,35 @@ body.admin .content section {
 	left: 30px !important;
 	display: block;
 }
+body.admin .content section#image_container { margin-top: 20px; }
+body.admin .content section#image_container,
+body.admin .content section#image_container .holder {
+	height: 300px;
+	width: 640px;
+}
+body.admin .content section#image_container .holder,
+body.admin .content section#image_container .holder .scroll-pane {
+	height: 290px;
+	width: 640px;
+}
+
 body.admin .content > .text-content { padding: 0; }
 body.admin .content > .text-content h1 { text-align: center; }
+
+.image-list li { border-bottom: #555 dotted 3px; }
+.image-list li:hover { background-color: #eee; }
+.image-list li a { display: inline-block; }
+.image-list li a:first-child {
+	padding: 0 10px 3px;
+	margin: 3px 0 -3px;
+	border-bottom: #ddd solid 3px;
+}
+.image-list li a:first-child + a {
+	padding: 0 10px;
+	display: none;
+	float: right;
+}
+.image-list li:hover a:first-child + a { display: inline-block; }
 
 .header {
 	position: fixed;
