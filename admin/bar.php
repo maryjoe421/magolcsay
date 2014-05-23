@@ -22,7 +22,7 @@
 			echo '<li class="separate-before"><a href="?b=file">Fájl feltöltése</a></li>';
 		}
 		echo '<li class="logout">
-				<span>'.$_SESSION["username"].' ('.$_SESSION["privilege"].')</span>
+				<a href="?b=profil&amp;userid='.$_SESSION["userid"].'">'.$_SESSION["username"].' ('.$_SESSION["privilege"].')</a>
 				<ul>';
 			if($_SESSION["privilege"] == "admin") {
 				echo '<li><a href="?b=set">Adatok módosítása</a></li>

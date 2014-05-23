@@ -97,7 +97,7 @@ if(isset($_GET["p"])) {
 		<script src="script/jquery.jscrollpane.min.js"></script>
 		<script src="script/jquery.mousewheel.js"></script>
 		<script src="script/plugins.js"></script>
-		<script src="script/clearbox.js"></script>
+		<script src="script/cb_main.js"></script>
 		<script src="script/main.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
