@@ -54,8 +54,8 @@ if($_SESSION["privilege"] == "user") {
 <?php if (in_array($_GET["p"], $excluded, true)) { ?>
 			<div class="row">
 				<label>nyelv:</label>
-				<select name="language">
-					<option value="">Válassz</option>
+				<select name="language" title="Csak akkor válassz nyelvet, ha kétnyelvű a menüpont, egyébként hagyd!">
+					<option value="">Válassz nyelvet!</option>
 					<option value="hu">magyar</option>
 					<option value="en">angol</option>
 				</select>

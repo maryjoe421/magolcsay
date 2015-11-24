@@ -11,23 +11,41 @@ if(isset($_GET["p"])) {
 	$p = '';
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
-		<title>Magolcsay Nagy Gábor - blog</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta http-equiv="content-language" content="hu" />
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Titillium+Web&amp;subset=latin,latin-ext" />
-		<link rel="stylesheet" media="screen" type="text/css" href="../style/main.css" />
-		<link rel="stylesheet" media="screen" type="text/css" href="../style/admin.css" />
-		<script type="text/javascript" src="../script/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="../script/jquery.jscrollpane.min.js"></script>
-		<script type="text/javascript" src="../script/jquery.mousewheel.js"></script>
-		<script type="text/javascript" src="../script/admin.js"></script>
+		<meta charset="utf-8">
+		<meta http-equiv="content-language" content="hu">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="title" content="">
+		<title>Magolcsay Nagy Gábor - admin</title>
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" type="image/x-icon" href="../favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Titillium+Web&amp;subset=latin,latin-ext" />
+		<link rel="stylesheet" href="../style/normalize.css">
+		<link rel="stylesheet" href="../style/main.css">
+		<link rel="stylesheet" href="../style/admin.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../script/jquery-1.8.2.min.js"><\/script>')</script>
+		<script src="../script/modernizr-2.6.2.min.js"></script>
 	</head>
 	<body class="admin">
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<!-- Add your site or application content here -->
+
 <?php
-include("bar.php");
+	$adminpath = '';
+	include($adminpath . "bar.php");
 ?>
 		<div class="content">
 <?php
@@ -42,6 +60,19 @@ if(isset($_SESSION["username"])) {
 }
 ?>
 		</div>
+		<script src="../script/jquery.jscrollpane.min.js"></script>
+		<script src="../script/jquery.mousewheel.js"></script>
+		<script src="../script/plugins.js"></script>
+		<script src="../script/cb_admin.js"></script>
+		<script src="../script/admin.js"></script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<!-- script>/*
+			var _gaq=[['_setAccount','UA-19437589-1'],['_trackPageview']];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g,s)}(document,'script'));
+		*/</script -->
 	</body>
 </html>
 <?php ob_end_flush(); ?>

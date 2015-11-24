@@ -1,0 +1,107 @@
+{
+	"projects": [{
+		"year": 2015,
+		"name": "Ego Eat Ego",
+		"details": {
+			"hu": "a zenéket írta és rögzítette - MNG: gitárok, basszusgitár, dobok, billentyűs hangszerek, szemplerek, programozás",
+			"en": "All music written and performed by MNG (guitars, bass, drums, keyboards, samplers and programming)"
+		},
+		"tracklist": [{
+			"link": "eee",
+			"title": "E.E.E.",
+			"duration": "3:33"
+		}, {
+			"link": "trash_talk_star",
+			"title": "Trash Talk Star",
+			"duration": "3:43"
+		}, {
+			"link": "things_i_want_to_tell_you",
+			"title": "Things I Want To Tell You",
+			"duration": "5:20"
+		}, {
+			"link": "luminescence",
+			"title": "Luminescence",
+			"duration": "4:24"
+		}]
+	},{
+		"year": 2013,
+		"name": "Silence Of The Second Step",
+		"details": {
+			"hu": "a zenéket írta és rögzítette - MNG: gitárok, basszusgitár, billentyűs hangszerek, citera, szemplerek, programozás",
+			"en": "All music written and performed by MNG (guitars, bass, keyboard, zither, samplers and programming)"
+		},
+		"tracklist": [{
+			"link": "alone_in_half_space",
+			"title": "Alone In Half-Space",
+			"duration": "1:59"
+		}, {
+			"link": "hope_is_great_but_we_need_vitamin",
+			"title": "Hope Is Great But We Need Vitamin",
+			"duration": "2:09"
+		}, {
+			"link": "orphan_smile",
+			"title": "Orphan Smile",
+			"duration": "2:02"
+		}, {
+			"link": "autumn_has_no_memory",
+			"title": "Autumn Has No Memory",
+			"duration": "2:32"
+		}, {
+			"link": "sofia",
+			"title": "Sofia",
+			"duration": "3:52"
+		}, {
+			"link": "pontoon",
+			"title": "Pontoon",
+			"duration": "2:10"
+		}, {
+			"link": "epoch_7",
+			"title": "Epoch 7",
+			"duration": "3:00"
+		}]
+	},{
+		"year": 2011,
+		"name": "Nine Days On <a href=\"inner#def_yggdrasil\" rel=\"clearbox[tnhrf=nopreview,,title=Yggdrasil]\">Yggdrasil</a> <dfn id=\"def_yggdrasil\">A skandináv mitológiában Yggdrasil a Világfa, vagy az élet fája. A mongolok szerint a Világfa csak egy karó, és az istenek arra használják, hogy hozzákössék a lovaikat. A jakutok szerint a Fa a Föld arany köldökén emelkedik, és tövében születtek az első emberek. A tanguzok azt mondják, hogy a még meg nem született gyermekek lelkei az ágai között időznek kismadár formájában. A törökök úgy vélik, a Világfának egymillió levele van, és minden levélen egy-egy ember élete van, ha a levél lehull, az ember meghal. Odin - a skandináv mitológia főistene - az Yggdrasil-on függött dárdával átdöfve kilenc napig, hogy megtudhassa a költészet és a rúnák titkát. (Odint tudása komorrá és melankolikussá tette.)<br /><br /><br />In Scandinavian mythology Yggdrasil is the World Tree, or the tree of life. According to the Mongolians the World Tree is just a simple rod which gods use to tie their horses to it. For the Jakuts the Tree grows on top of the golden belly button of the Earth and the first people were born there, at its foot. Tanguz people say that the souls of the yet unborn children pass their time among the branches in the form of little birds. The Turkish believe that the World Tree has one million leaves with someone’s life on each leaf, and if a leaf falls down the person dies. Odin, the chief god in Scandinavian mythology was hanging from Yggdrasil pierced by a spear for nine days to get to know the secrets of poetry and the runes. (His knowledge made Odin mournful and melancholic.)</dfn>",
+		"details": {
+			"hu": "a zenéket írta és rögzítette - MNG: gitárok, basszusgitár, billentyűs hangszerek, kalimba, szemplerek, programozás<br />szöveg az apokaliptikus költészet c. dalban <a href=\"inner#veronica_lueken_hu\" rel=\"clearbox[tnhrf=nopreview,,title=Veronica Lueken]\">Veronica Lueken</a> <dfn id=\"veronica_lueken_hu\">I'm suspended<br />And the light is so bright it hurts my eyes<br />And I see this huge ball<br />Now in the center its...<br />Its A gray colored ball<br />Almost.. oh... I don't know what its made of...<br />But the rock like formation<br />But as its turning now<br />Its begining to change color<br />Becoming a purplish Hazy Orange looking ball...</dfn>",
+			"en": "All music written and performed by MNG (guitars, bass, keyboard, kalimba, samplers and programming)<br />Text in Apocalyptic Poetry by <a href=\"inner#veronica_lueken_en\" rel=\"clearbox[tnhrf=nopreview,,title=Veronica Lueken]\">Veronica Lueken</a> <dfn id=\"veronica_lueken_en\">I'm suspended<br />And the light is so bright it hurts my eyes<br />And I see this huge ball<br />Now in the center its...<br />Its A gray colored ball<br />Almost.. oh... I don't know what its made of...<br />But the rock like formation<br />But as its turning now<br />Its begining to change color<br />Becoming a purplish Hazy Orange looking ball...</dfn>"
+		},
+		"tracklist": [{
+			"link": "key_and_tree",	
+			"title": "Key and Tree",
+			"duration": "7:05"
+		}, {
+			"link": "drain",
+			"title": "Drain",
+			"duration": "6:04"
+		}, {
+			"link": "cloud_below_zero",
+			"title": "Cloud Below Zero",
+			"duration": "4:02"
+		}, {
+			"link": "dead_window_(on_your_forehead)",
+			"title": "Dead Window (on your Forehead)",
+			"duration": "9:15"
+		}, {
+			"link": "light_upset",
+			"title": "Light Upset",
+			"duration": "4:24"
+		}, {
+			"link": "honeydew",
+			"title": "Honeydew",
+			"duration": "4:30"
+		}, {
+			"link": "home_rolls_away",
+			"title": "Home Rolls Away",
+			"duration": "2:55"
+		}, {
+			"link": "apocalyptic_poetry",
+			"title": "Apocalyptic Poetry",
+			"duration": "4:03"
+		}, {
+			"link": "pole_shift",
+			"title": "Pole Shift",
+			"duration": "7:24"
+		}]
+	}]
+}

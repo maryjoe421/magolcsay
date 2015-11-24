@@ -14,14 +14,14 @@ if($_SESSION["privilege"] == "user") {
 		if($is_id = mysql_query($id_check) and mysql_num_rows($is_id) > 0){
 			$query = "UPDATE mng_".$p." SET date='$date', title='$title', text='$text', language='$language', published='$published' WHERE id='$id'";
 			mysql_query($query);
-			header("location: index.php?b=list&p=$p");
+			header("Location: index.php?b=list&p=$p");
 		} else {
 			echo "<p>HIBA: Nincs ilyen azonosító! ($id)</p>";
-			header("refresh: 2 url=index.php?b=list&p=$p");
+			header("Refresh: 2 url=index.php?b=list&p=$p");
 		}
 	} elseif(isset($_POST["cancel"])) {
 		$p = $_POST["p"];
-		header("location: index.php?b=list&p=$p");
+		header("Location: index.php?b=list&p=$p");
 	} else {
 		if(isset($_GET["id"])) {
 			$p = $_GET["p"];
@@ -79,8 +79,8 @@ if($_SESSION["privilege"] == "user") {
 
 		<div class="row">
 			<label>nyelv:</label>
-			<select name="language">
-				<option value="">Válassz</option>
+			<select name="language" title="Csak akkor válassz nyelvet, ha kétnyelvű a menüpont, egyébként hagyd!">
+				<option value="">Válassz nyelvet!</option>
 				<option value="hu"<?php if ($result_row["language"] == "hu") { echo ' selected="selected"'; } ?>>magyar</option>
 				<option value="en"<?php if ($result_row["language"] == "en") { echo ' selected="selected"'; } ?>>angol</option>
 			</select>
@@ -99,12 +99,12 @@ if($_SESSION["privilege"] == "user") {
 <?php
 		} else {
 			echo "<p>HIBA: Nincs ilyen azonosító! ($id)</p>";
-			header("refresh: 2 url=index.php?b=list&p=$p");
+			header("Refresh: 2 url=index.php?b=list&p=$p");
 		}
 	}
 } else {
 	echo "<p>Nincs jogosultságod új bejegyzést írni!</p>";
-	header("refresh: 2 url=index.php?b=list&p=$p");
+	header("Refresh: 2 url=index.php?b=list&p=$p");
 }
 ?>
 </div>

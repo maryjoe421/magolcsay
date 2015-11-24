@@ -10,7 +10,10 @@
 .clearfix { display: block; }
 
 .text-center { text-align: center; }
-
+.warning {
+	color: #f00;
+	text-align: center;
+}
 
 body.admin {
 	margin: 0;
@@ -28,17 +31,18 @@ body.admin .content {
 }
 body.admin .content section {
 	top: 0 !important;
-	left: 30px !important;
+	left: auto !important;
 	display: block;
+	margin: 0 auto;
 }
-body.admin .content section#image_container { margin-top: 20px; }
-body.admin .content section#image_container,
-body.admin .content section#image_container .holder {
+body.admin .content section#file_container { margin-top: 20px; }
+body.admin .content section#file_container,
+body.admin .content section#file_container .holder {
 	height: 300px;
 	width: 640px;
 }
-body.admin .content section#image_container .holder,
-body.admin .content section#image_container .holder .scroll-pane {
+body.admin .content section#file_container .holder,
+body.admin .content section#file_container .holder .scroll-pane {
 	height: 290px;
 	width: 640px;
 }
@@ -46,20 +50,20 @@ body.admin .content section#image_container .holder .scroll-pane {
 body.admin .content > .text-content { padding: 0; }
 body.admin .content > .text-content h1 { text-align: center; }
 
-.image-list li { border-bottom: #555 dotted 3px; }
-.image-list li:hover { background-color: #eee; }
-.image-list li a { display: inline-block; }
-.image-list li a:first-child {
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li { border-bottom: #555 dotted 3px; }
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li:hover { background-color: #eee; }
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li a { display: inline-block; }
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li a:first-child {
 	padding: 0 10px 3px;
 	margin: 3px 0 -3px;
 	border-bottom: #ddd solid 3px;
 }
-.image-list li a:first-child + a {
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li a:first-child + a {
 	padding: 0 10px;
 	display: none;
 	float: right;
 }
-.image-list li:hover a:first-child + a { display: inline-block; }
+body.admin .content section#file_container .holder .scroll-pane .text-content ul li:hover a:first-child + a { display: inline-block; }
 
 .header {
 	position: fixed;
@@ -141,6 +145,7 @@ body.admin .content > .text-content h1 { text-align: center; }
 	position: relative;
 	padding-bottom: 15px;
 }
+.admin-form p { margin: 0 0 10px; }
 .admin-form fieldset .row { display: none; }
 .admin-form legend { margin-bottom: 15px; }
 .admin-form legend label { cursor: pointer; }
@@ -154,6 +159,7 @@ body.admin .content > .text-content h1 { text-align: center; }
 	display: none;
 }
 .admin-form .row input,
+.admin-form .row.btn input[type="file"],
 .admin-form .row .select {
 	font-size: 100%;
 	width: 574px;
@@ -171,6 +177,11 @@ body.admin .content > .text-content h1 { text-align: center; }
 	-moz-transition: all 0.3s; /* Firefox 4 */
 	-webkit-transition: all 0.3s; /* Safari and Chrome */
 }
+.admin-form .row.btn input[type="file"] { width: 490px; }
+.admin-form .row.captcha input { width: 100px; }
+
+.admin-form .row.captcha img { float: right; }
+
 .admin-form.login .row input { width: 318px; }
 .admin-form .row textarea {
 	width: 570px;
@@ -186,7 +197,7 @@ body.admin .content > .text-content h1 { text-align: center; }
 	-webkit-box-shadow: 0 0 10px #1d76c1;
 }
 
-.admin-form .btn  { clear: both; }
+.admin-form .btn { clear: both; }
 .admin-form .btn ul {
 	list-style: none;
 	text-align: right;
@@ -198,6 +209,7 @@ body.admin .content > .text-content h1 { text-align: center; }
 	border: none;
 	background: transparent;
 }
+
 .admin-form legend label input[type="radio"] { margin: 0 5px 0 0; }
 .admin-form .row select {
 	position: relative;
@@ -227,7 +239,8 @@ body.admin .content > .text-content h1 { text-align: center; }
 	border-top: #222 solid 5px;
 }
 
-.admin-form .btn input {
+.admin-form .btn input,
+.admin-form .row.btn input[type="submit"] {
 	font-size: 100%;
 	padding: 3px 10px;
 	background: #ccc;
@@ -245,6 +258,7 @@ body.admin .content > .text-content h1 { text-align: center; }
 	-moz-transition: all 0.3s; /* Firefox 4 */
 	-webkit-transition: all 0.3s; /* Safari and Chrome */
 }
+.admin-form .row.btn input[type="submit"] { width: auto; }
 .admin-form .btn input:active {
 	box-shadow: none;
 	-moz-box-shadow: none;

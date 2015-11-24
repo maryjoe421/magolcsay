@@ -21,4 +21,5 @@
 	echo "1";
 	createFile("file");
 	createFile("picture");
+	header("location: index.php?b=file");
 ?>
