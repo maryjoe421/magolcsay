@@ -3,20 +3,21 @@
 if (isset($_POST["save"])) {
 	$username = htmlspecialchars($_POST["username"]);
 	$password = md5($_POST["password"]);
-	$query = "SELECT * FROM mng_users WHERE (username='$username' AND password='$password')";
+	$query = "SELECT * FROM sys_user WHERE (username='$username' AND password='$password')";
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) > 0) {
 		$result_row = mysql_fetch_array($result);
+		$_SESSION["userid"] = $result_row["id"];
 		$_SESSION["username"] = $result_row["username"];
 		$_SESSION["privilege"] = $result_row["privilege"];
-		$_SESSION["userid"] = $result_row["id"];
-		header("Location: index.php");
+		header("location: index.php");
 	} else {
 		echo '<p class="warning">Hibás Név / Jelszó!</p>';
 	}
 }
 ?>
-	<div class="admin-form">
+	<h1>Bejelentkezés</h1>
+	<div class="admin-form login">
 		<form action="?b=login" method="post">
 			<div class="row">
 				<label>Név:</label>

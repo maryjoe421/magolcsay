@@ -16,22 +16,28 @@ mysql_select_db("$sql_adatbazis") or die('<div class="holder"><div class="scroll
 mysql_query('SET NAMES utf8');
 
 
-$all_menuitems = array("bio", "logo_mandala", "workshop", "ashes_of_cows", "things", "events", "contact", "publications");
+// szerkeszthető menüelemek
+$editable_menuitems = array(
+	"bio" => "bio",
+	"books" => "könyvek",
+	"publications" => "publikációk",
+	"reception" => "recepció",
+	"events" => "események",
+	"contact" => "kapcsolat"
+);
 
 // gyakran változó tartalmak
-$included = array("workshop", "things", "events");
+$included = array("publications", "reception", "events");
 
-// folytonos tartalmak
-$excluded = array("bio", "contact", "publications");
+// ritkán változó tartalmak
+$excluded = array("bio", "books", "contact");
 
-// menüelemek
-$editable_menuitems = array(
-	"bio" => "Bio",
-	"workshop" => "Műhely",
-	"things" => "Dolgok",
-	"events" => "Események",
-	"contact" => "Kapcsolat",
-	"publications" => "Publikációk"
+$languages = array(
+	"hu" => "magyar",
+	"en" => "english"
 );
+
+// nincs dátum szerinti rendezés
+$orderbynone = array("publications");
 
 ?>
