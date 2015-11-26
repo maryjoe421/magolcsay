@@ -294,10 +294,6 @@ jQuery(function($) {
 			jQuery(this).blur();
 		});
 
-		jQuery(document).on("click", "#jplayer_stop", function(event) {
-			event.preventDefault();
-			window.location.hash = jQuery(this).attr("href");
-		});
 
 		var playItem = 0,
 			myPlayList;
@@ -395,6 +391,7 @@ jQuery(function($) {
 			jQuery(".jp-playlist > ul").hide().css("top", "-" + actualItem + "px").fadeIn("slow");
 			playItem = index;
 			jQuery("#jquery_jplayer").jPlayer("setFile", myPlayList[playItem].mp3);
+			window.location.hash = trackPrefix + jQuery(".jplayer_playlist_current a").attr("href").replace(trackPath, "").replace(".mp3", "");
 		}
 
 		function playListChange(index) {
@@ -405,14 +402,13 @@ jQuery(function($) {
 		function playListNext() {
 			var index = (playItem + 1 < myPlayList.length) ? playItem + 1 : 0;
 			playListChange(index);
-			window.location.hash = trackPrefix + jQuery(".jplayer_playlist_current a").attr("href").replace(trackPath, "").replace(".mp3", "");
 		}
 
 		function playListPrev() {
 			var index = (playItem - 1 >= 0) ? playItem - 1 : myPlayList.length - 1;
 			playListChange(index);
-			window.location.hash = trackPrefix + jQuery(".jplayer_playlist_current a").attr("href").replace(trackPath, "").replace(".mp3", "");
 		}
+
 
 		// login stripe slide toggle
 		if (jQuery(".header")[0]) {
