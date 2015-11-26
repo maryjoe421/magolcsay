@@ -1,30 +1,10 @@
-jQuery(function($) {
+jQuery(document).ready(function() {
 
-	var trackPath = "file/",
-		trackContent = "ashes_of_cows",
-		trackPrefix = "#" + trackContent + "/",
+	var langCode = window.navigator.userLanguage || window.navigator.language,
+		language = (langCode.length > 2) ? langCode.substring(0, 2) : langCode;
 
-		langCode = window.navigator.userLanguage || window.navigator.language,
-		language = (jQuery.cookie("language") !== null) ? jQuery.cookie("language") : (langCode.length > 2) ? langCode.substring(0, 2) : langCode,
+	var siteHash = document.location.hash;
 
-		siteHash = window.location.hash,
-
-		pageHash = getHashBegin(siteHash.substr(1)),
-		trackHash = getHashEnd(siteHash);
-
-
-	function isPlaying() {
-		var playbar = jQuery("#jplayer_play_bar").css("width");
-		if (jQuery(".jp-playlist-player")[0]) {
-			if (parseInt(playbar.replace("px", "")) > 0) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
 
 	function initScroll(scrolling) {
 		if (window.matchMedia('(min-width: 992px)').matches) {
@@ -38,12 +18,12 @@ jQuery(function($) {
 
 					// console.log("jspPaneHeight", jspPaneHeight, "jspPaneTopPos:", jspPaneTopPos, "parentHeight:", parentHeight, "isAtBottom:", isAtBottom);
 
-					if (isAtBottom === true) {
+					if (isAtBottom == true) {
 						num + 1;
-						if ((jspPaneHeight + jspPaneTopPos) !== parentHeight) {
+						if ((jspPaneHeight + jspPaneTopPos) != parentHeight) {
 							initScroll();
 						}
-						if ((jspPaneHeight + jspPaneTopPos) === parentHeight) { /*
+						if ((jspPaneHeight + jspPaneTopPos) == parentHeight) { /*
 							jQuery(".loader").show();
 							jQuery.ajax({
 								url: "menu.php",
@@ -71,12 +51,13 @@ jQuery(function($) {
 	}
 
 	function playTrack(track) {
-		var pos = jQuery('#jplayer_playlist ul li a[href="' + trackPath + track + '.mp3"]').parent().index();
+		var list = jQuery("#jplayer_playlist ul");
+			pos = list.find('a[href="file/' + track + '.mp3"]').parent().index();
 		playListChange(pos);
 	}
 
 	function getHashBegin(hash) {
-		if (hash.indexOf("/") !== -1) {
+		if (hash.indexOf("/") != -1) {
 			hash = hash.split("/");
 			return hash[0];
 		} else {
@@ -85,7 +66,7 @@ jQuery(function($) {
 	}
 
 	function getHashEnd(hash) {
-		if (hash.indexOf("/") !== -1) {
+		if (hash.indexOf("/") != -1) {
 			hash = hash.split("/");
 			return hash[1];
 		} else {
@@ -126,21 +107,13 @@ jQuery(function($) {
 		}
 	}
 
-	function setPlayer(page) {
-		if (page === trackContent && isPlaying() === false) {
-			createPlayList();
-			jPlayerAdvancedHtml();
-		}
-	}
-
 	function setPanel(page) {
 		jQuery(".section-layer").fadeIn("fast", function() {
-			if (jQuery.trim(jQuery("section[rel='" + page + "']").html()) === "") {
+			if (jQuery.trim(jQuery("section[rel='" + page + "']").html()) == "") {
 				jQuery.ajax({
 					url: "menu.php",
 					data: "menuitem=" + page,
-					async: true,
-					success: function(html, status, xhr) {
+					success: function(html) {
 						// console.log("Hooray, it worked!");
 						jQuery("section[rel='" + page + "']").html(html).fadeIn("fast", function() {
 							setPanelContent(page);
@@ -148,15 +121,6 @@ jQuery(function($) {
 							outerLinks();
 							wrapIframe();
 						});
-					},
-					beforeSend: function(xhr) {
-						// console.log(xhr);
-					},
-					error: function(xhr, status, error) {
-						// console.log(xhr, status, error);
-					},
-					complete: function(xhr, status) {
-						// console.log(xhr, status);
 					}
 				});
 			} else {
@@ -164,26 +128,30 @@ jQuery(function($) {
 					setPanelContent(page);
 				});
 			}
-			setPlayer(page);
 		});
 	}
 
 
 	// open panel by hash
-	if (siteHash !== "") {
-		setPanel(pageHash);
+	if (siteHash != "") {
+		var item = getHashBegin(siteHash.substr(1)),
+			trackHash = getHashEnd(siteHash);
+		setPanel(item);
+		if (trackHash != "") {
+			playTrack(trackHash);
+		}
 	}
 
 
 	// menuitem click
-	jQuery(document).on("click", ".menu > li > a", function() {
+	jQuery(".menu > li > a").on("click", function() {
 		_gaq.push(["_trackEvent", "menu", jQuery(this).attr("title")]);
 		var item = jQuery(this).attr("href").substr(1);
 		setPanel(item);
 	});
 
 	// language change
-	jQuery(document).on("click", ".language", function(event) {
+	jQuery("body").on("click", ".language", function(event) {
 		event.preventDefault();
 		var langcode = jQuery(this).attr("href").substr(1),
 			section = jQuery(this).parents("section");
@@ -192,43 +160,36 @@ jQuery(function($) {
 			section.find(".holder[lang='" + langcode + "']").fadeIn("fast");
 			section.find(".language").removeClass("active");
 			section.find("a[href='#" + langcode + "']").addClass("active");
-			jQuery.cookie("language", langcode, {
-				expires: 365,
-				path: '/'
-			});
 		});
 		initScroll(0);
 	});
 
 	// hide panels
-	jQuery(document).on("click", ".close", function() {
+	jQuery("body").on("click", ".close", function() {
 		var item = jQuery(this).parents("section").attr("id");
 		jQuery("#" + item).fadeOut("fast", function() {
 			jQuery(".section-layer").fadeOut("fast");
-			if (isPlaying() === false) {
-				jQuery(".footer").empty();
-			}
 		});
 	});
 
 
 	if (window.matchMedia('(min-width: 992px)').matches) {
 		// menuitems hover
-		jQuery(".menu > a").hover(function() {
+		jQuery(".menu").find("a").hover(function() {
 			jQuery(this).parent().addClass("over");
 		}, function() {
 			jQuery(this).parent().removeClass("over");
 		});
 
 		// bio, events, contacts hover
-		jQuery("#item1 > a, #item5 > a, #item6 > a").hover(function() {
+		jQuery("#item1 a, #item5 a, #item6 a").hover(function() {
 			jQuery(this).find("> span").fadeIn("slow");
 		}, function() {
 			jQuery(this).find("> span").fadeOut("slow");
 		});
 
 		// books hover
-		jQuery("#item2 > a").hover(function() {
+		jQuery("#item2 a").hover(function() {
 			jQuery(this).find("> span").fadeIn("slow").arctext({
 				radius: 40,
 				dir: -1
@@ -238,7 +199,7 @@ jQuery(function($) {
 		});
 
 		// publications hover
-		jQuery("#item3 > a").hover(function() {
+		jQuery("#item3 a").hover(function() {
 			jQuery(this).find("> span").show().stop().animate({"bottom": "130px"}, 1800);
 		}, function() {
 			jQuery(this).find("> span").stop().animate({"bottom": "800px"}, 1800, function() {
@@ -246,17 +207,8 @@ jQuery(function($) {
 			});
 		});
 
-		// reception hover
-		jQuery("#item4 > a").hover(function() {
-			jQuery(this).find("> span").show().stop().animate({"bottom": "45px"}, 400);
-		}, function() {
-			jQuery(this).find("> span").stop().animate({"bottom": "-30px"}, 400, function() {
-				jQuery(this).hide();
-			});
-		});
-
 		// ashes of cows hover
-		jQuery("#" + trackContent + " > a").hover(function() {
+		jQuery("#ashes_of_cows a").hover(function() {
 			jQuery(this).find("> span").fadeIn("slow").arctext({
 				radius: 10
 			});
@@ -264,12 +216,21 @@ jQuery(function($) {
 			jQuery(this).find("> span").fadeOut("slow");
 		});
 
+		// reception hover
+		jQuery("#item4 a").hover(function() {
+			jQuery(this).find("> span").show().stop().animate({"bottom": "45px"}, 400);
+		}, function() {
+			jQuery(this).find("> span").stop().animate({"bottom": "-30px"}, 400, function() {
+				jQuery(this).hide();
+			});
+		});
+
 		// playing tracks
-		jQuery(document).on("click", ".track", function(event) {
+		jQuery(".track").on("click", function(event) {
 			event.preventDefault();
 			_gaq.push(["_trackEvent", "ashes of cows", jQuery(this).attr("title")]);
-			var trackItem = jQuery(this).attr("href").substring(jQuery(this).attr("href").lastIndexOf("/") + 1, jQuery(this).attr("href").length);
-			window.location.hash = trackPrefix + trackItem;
+			var trackItem = jQuery(this).attr("href").substr(1);
+			window.location.hash = "#ashes_of_cows/" + trackItem;
 			playTrack(trackItem);
 		});
 
@@ -282,92 +243,92 @@ jQuery(function($) {
 		});
 
 
-		jQuery(document).on("click", "#jplayer_previous", function(event) {
+		jPlayerAdvancedHtml();
+
+
+		// jplayer
+		jQuery("#jquery_jplayer").jPlayer({
+			ready: function() {
+				displayPlayList();
+				playListInit(false);
+			},
+			swfPath: "flash"
+		}).jPlayer("onProgressChange", function(loadPercent, playedPercentRelative, playedPercentAbsolute, playedTime, totalTime) {
+			jQuery("#jplayer_play_time").text(jQuery.jPlayer.convertTime(playedTime));
+			jQuery("#jplayer_total_time").text(jQuery.jPlayer.convertTime(totalTime));
+		}).jPlayer("onSoundComplete", function() {
+			playListNext();
+		});
+
+		jQuery("#jplayer_previous").on("click", function(event) {
 			event.preventDefault();
 			playListPrev();
 			jQuery(this).blur();
 		});
 
-		jQuery(document).on("click", "#jplayer_next", function(event) {
+		jQuery("#jplayer_next").on("click", function(event) {
 			event.preventDefault();
 			playListNext();
 			jQuery(this).blur();
 		});
 
-		jQuery(document).on("click", "#jplayer_stop", function(event) {
+		jQuery("#jplayer_stop").on("click", function(event) {
 			event.preventDefault();
 			window.location.hash = jQuery(this).attr("href");
 		});
 
 		var playItem = 0,
-			myPlayList;
+			myPlayList = createPlayList();
 
+
+		function jPlayerAdvancedHtml() {
+			var advancedPlayerHtml = '' +
+			'<div id="jquery_jplayer"></div>' +
+			'<div class="jp-playlist-player">' +
+				'<div class="jp-interface">' +
+					'<ul class="jp-controls">' +
+						'<li><a href="#" id="jplayer_play" class="jp-play" tabindex="1">play</a></li>' +
+						'<li><a href="#" id="jplayer_pause" class="jp-pause" tabindex="1">pause</a></li>' +
+						'<li><a href="#ashes_of_cows" id="jplayer_stop" class="jp-stop" tabindex="1">stop</a></li>' +
+						'<li><a href="#" id="jplayer_previous" class="jp-previous" tabindex="1">previous</a></li>' +
+						'<li><a href="#" id="jplayer_next" class="jp-next" tabindex="1">next</a></li>' +
+					'</ul>' +
+					'<div id="jplayer_play_time" class="jp-play-time"></div>' +
+					'<div class="jp-progress">' +
+						'<div id="jplayer_load_bar" class="jp-load-bar">' +
+							'<div id="jplayer_play_bar" class="jp-play-bar"></div>' +
+						'</div>' +
+					'</div>' +
+					'<div id="jplayer_total_time" class="jp-total-time"></div>' +
+					'<div id="jplayer_volume_bar" class="jp-volume-bar">' +
+						'<div id="jplayer_volume_bar_value" class="jp-volume-bar-value"></div>' +
+					'</div>' +
+				'</div>' +
+				'<div id="jplayer_playlist" class="jp-playlist">' +
+					'<ul>' +
+						'<li></li>' +
+					'</ul>' +
+				'</div>' +
+			'</div>';
+			jQuery(".footer").append(advancedPlayerHtml);
+		}
 
 		function createPlayList() {
 			var items = jQuery(".track-list").toArray(),
 				array = [];
 			for (var i = 0; i < items.length; i++) {
-				array.push('{name: "' + items[i].innerHTML + '", mp3: "' + trackPath + items[i].href.substring(items[i].href.lastIndexOf("/") + 1, items[i].href.length) + '.mp3"}');
+				array.push('{name: "' + items[i].innerHTML + '", mp3: "file/' + items[i].href.substring(items[i].href.indexOf("#") + 1, items[i].href.length) + '.mp3"}');
 			}
-			myPlayList = eval("[" + array.join(",") + "];");
-		}
-
-		function jPlayerAdvancedHtml() {
-			var advancedPlayerHtml = '' +
-			'<div class="player">' +
-				'<div id="jquery_jplayer"></div>' +
-				'<div class="jp-playlist-player">' +
-					'<div class="jp-interface">' +
-						'<ul class="jp-controls">' +
-							'<li><a href="#" id="jplayer_play" class="jp-play" tabindex="1">play</a></li>' +
-							'<li><a href="#" id="jplayer_pause" class="jp-pause" tabindex="1">pause</a></li>' +
-							'<li><a href="#' + trackContent + '" id="jplayer_stop" class="jp-stop" tabindex="1">stop</a></li>' +
-							'<li><a href="#" id="jplayer_previous" class="jp-previous" tabindex="1">previous</a></li>' +
-							'<li><a href="#" id="jplayer_next" class="jp-next" tabindex="1">next</a></li>' +
-						'</ul>' +
-						'<div id="jplayer_play_time" class="jp-play-time"></div>' +
-						'<div class="jp-progress">' +
-							'<div id="jplayer_load_bar" class="jp-load-bar">' +
-								'<div id="jplayer_play_bar" class="jp-play-bar"></div>' +
-							'</div>' +
-						'</div>' +
-						'<div id="jplayer_total_time" class="jp-total-time"></div>' +
-						'<div id="jplayer_volume_bar" class="jp-volume-bar">' +
-							'<div id="jplayer_volume_bar_value" class="jp-volume-bar-value"></div>' +
-						'</div>' +
-					'</div>' +
-					'<div id="jplayer_playlist" class="jp-playlist">' +
-						'<ul></ul>' +
-					'</div>' +
-				'</div>' +
-			'</div>';
-			jQuery(".footer").html(advancedPlayerHtml).fadeIn("fast");
-			// jplayer
-			jQuery("#jquery_jplayer").jPlayer({
-				ready: function() {
-					displayPlayList();
-					if (trackHash !== "") {
-						var trackItem = jQuery('section[rel="' + trackContent + '"] .holder:eq(0) .tracks ul li a[href="' + trackPrefix + trackHash + '"]').parent().attr("tabindex");
-						playListChange(trackItem);
-					} else {
-						playListInit(false);
-					}
-				},
-				swfPath: "flash"
-			}).jPlayer("onProgressChange", function(loadPercent, playedPercentRelative, playedPercentAbsolute, playedTime, totalTime) {
-				jQuery("#jplayer_play_time").text(jQuery.jPlayer.convertTime(playedTime));
-				jQuery("#jplayer_total_time").text(jQuery.jPlayer.convertTime(totalTime));
-			}).jPlayer("onSoundComplete", function() {
-				playListNext();
-			});
+			return eval("[" + array.join(",") + "];");
 		}
 
 		function displayPlayList() {
 			jQuery("#jplayer_playlist ul").empty();
-			for (var i = 0; i < myPlayList.length; i++) {
-				var listItem = '<li><a href="' + myPlayList[i].mp3 + '" id="jplayer_playlist_item_' + i + '" tabindex="1">' + myPlayList[i].name + '</a></li>';
+			for (i=0; i < myPlayList.length; i++) {
+				var listItem = (i == myPlayList.length - 1) ? '<li class="jplayer_playlist_item_last">' : '<li>';
+				listItem += '<a href="' + myPlayList[i].mp3 + '" id="jplayer_playlist_item_' + i + '" tabindex="1">' + myPlayList[i].name + '</a></li>';
 				jQuery("#jplayer_playlist ul").append(listItem);
-				jQuery("#jplayer_playlist ul").data("index", i).on("click", "#jplayer_playlist_item_" + i, function(event) {
+				jQuery("#jplayer_playlist_item_" + i).data("index", i).on("click", function(event) {
 					event.preventDefault();
 					var index = jQuery(this).data("index");
 					if (playItem != index) {
@@ -389,8 +350,8 @@ jQuery(function($) {
 		}
 
 		function playListConfig(index) {
-			jQuery("#jplayer_playlist_item_" + playItem).parent().removeClass("jplayer_playlist_current");
-			jQuery("#jplayer_playlist_item_" + index).parent().addClass("jplayer_playlist_current");
+			jQuery("#jplayer_playlist_item_" + playItem).removeClass("jplayer_playlist_current").parent().removeClass("jplayer_playlist_current");
+			jQuery("#jplayer_playlist_item_" + index).addClass("jplayer_playlist_current").parent().addClass("jplayer_playlist_current");
 			var actualItem = jQuery(".jplayer_playlist_current").position().top;
 			jQuery(".jp-playlist > ul").hide().css("top", "-" + actualItem + "px").fadeIn("slow");
 			playItem = index;
@@ -405,13 +366,13 @@ jQuery(function($) {
 		function playListNext() {
 			var index = (playItem + 1 < myPlayList.length) ? playItem + 1 : 0;
 			playListChange(index);
-			window.location.hash = trackPrefix + jQuery(".jplayer_playlist_current a").attr("href").replace(trackPath, "").replace(".mp3", "");
+			window.location.hash = "#ashes_of_cows/" + jQuery("a.jplayer_playlist_current").attr("href").replace("file/", "").replace(".mp3", "");
 		}
 
 		function playListPrev() {
 			var index = (playItem - 1 >= 0) ? playItem - 1 : myPlayList.length - 1;
 			playListChange(index);
-			window.location.hash = trackPrefix + jQuery(".jplayer_playlist_current a").attr("href").replace(trackPath, "").replace(".mp3", "");
+			window.location.hash = "#ashes_of_cows/" + jQuery("a.jplayer_playlist_current").attr("href").replace("file/", "").replace(".mp3", "");
 		}
 
 		// login stripe slide toggle
@@ -427,29 +388,29 @@ jQuery(function($) {
 
 	if (window.matchMedia('(max-width: 991px)').matches) {
 		jQuery(".track").each(function() {
-			var trackHref = trackPath + jQuery(this).attr('href').substring(1) + ".mp3";
-			jQuery(document).on('click', this, function(event) {
+			var trackHref = "file/" + jQuery(this).attr('href').substring(1) + ".mp3";
+			jQuery(this).on('click', function(event) {
 				event.preventDefault();
 				jQuery(".controls").remove();
 				jQuery(this).parent().addClass('playing').append('<div class="controls"><a href="#" class="control" id="aoc_play">play</a><a href="#" class="control" id="aoc_pause">pause</a><a href="#" class="control" id="aoc_stop">stop</a></div>');
-				jQuery("#" + trackContent + "_container").append('<audio id="aoc_player"/>')
+				jQuery("#ashes_of_cows_container").append('<audio id="aoc_player"/>')
 				jQuery("#aoc_player").attr('src', trackHref);
 				document.getElementById("aoc_player").play();
 				jQuery("#aoc_play").hide();
 
-				jQuery(document).on('click', "#aoc_pause", function(event) {
+				jQuery("#aoc_pause").on('click', function(event) {
 					event.preventDefault();
 					document.getElementById("aoc_player").pause();
 					jQuery("#aoc_pause").hide();
 					jQuery("#aoc_play").show();
 				});
-				jQuery(document).on('click', "#aoc_play", function(event) {
+				jQuery("#aoc_play").on('click', function(event) {
 					event.preventDefault();
 					document.getElementById("aoc_player").play();
 					jQuery("#aoc_play").hide();
 					jQuery("#aoc_pause").show();
 				});
-				jQuery(document).on('click', "#aoc_stop", function(event) {
+				jQuery("#aoc_stop").on('click', function(event) {
 					event.preventDefault();
 					document.getElementById("aoc_player").pause();
 					document.getElementById("aoc_player").src = "";

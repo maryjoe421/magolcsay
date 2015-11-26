@@ -16,7 +16,13 @@ mysql_select_db("$sql_adatbazis") or die('<div class="holder"><div class="scroll
 mysql_query('SET NAMES utf8');
 
 
-// szerkeszthető menüelemek
+// gyakran változó tartalmak
+$included = array("publications", "reception", "events");
+
+// ritkán változó tartalmak
+$excluded = array("bio", "books", "contact");
+
+// menüelemek
 $editable_menuitems = array(
 	"bio" => "bio",
 	"books" => "könyvek",
@@ -25,12 +31,6 @@ $editable_menuitems = array(
 	"events" => "események",
 	"contact" => "kapcsolat"
 );
-
-// gyakran változó tartalmak
-$included = array("publications", "reception", "events");
-
-// ritkán változó tartalmak
-$excluded = array("bio", "books", "contact");
 
 $languages = array(
 	"hu" => "magyar",

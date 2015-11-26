@@ -274,15 +274,15 @@ body { background-color: #555; }
 
 
 .section-layer {
-	position: absolute;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	bottom: 0;
-	left: 50%;
-	width: 1366px;
-	height: 768px;
-	margin-left: -683px;
-	background: url(../image/document-opaque-bg.png) no-repeat 0 0;
-	display: none;
 	z-index: 3;
+	background: rgba(0, 0, 0, 0.35);
+	-pie-background: rgba(0, 0, 0, 0.35);
+	display: none;
 }
 .content {
 	position: absolute;
@@ -645,6 +645,32 @@ dfn {
 #item5_container .text-content td { max-width: 600px; }
 /* events */
 
+.player-wrapper { position: relative; }
+
+.footer,
+.simple-player {
+	position: absolute;
+	bottom: -70px;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	background: #000;
+	box-shadow: 0 0 25px #000;
+	-moz-box-shadow: 0 0 25px #000;
+	-webkit-box-shadow: 0 0 25px #000;
+	border-radius: 0 0 9px 9px;
+	-moz-border-radius: 0 0 9px 9px;
+	-webkit-border-radius: 0 0 9px 9px;
+	behavior: url(../script/pie.htc);
+}
+.simple-player {
+	bottom: -8px;
+	border-radius: 9px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+}
+.simple-player .jp-interface { margin: 0; }
+
 
 /* jquery scroll */
 .jspContainer {
@@ -740,9 +766,13 @@ dfn {
 
 
 /* jplayer */
-.jp-playlist-player { overflow: hidden; }
+.jp-playlist-player {
+	padding: 5px 0;
+	overflow: hidden;
+}
 .jp-interface {
 	position: relative;
+	margin: 0 auto 5px;
 	width: 400px;
 	height: 26px;
 }
@@ -767,13 +797,64 @@ a.jp-next {
 	width: 22px;
 	height: 22px;
 	margin: 2px;
-	background-image:  url(../image/icon-controls.png);
-	background-repeat: no-repeat;
+	border-radius: 11px;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	behavior: url(../script/pie.htc); /* you must use absolute path */
+	transition: background 0.3s;
+	-o-transition: background 0.3s; /* Opera */
+	-moz-transition: background 0.3s; /* Firefox 4 */
+	-webkit-transition: background 0.3s; /* Safari and Chrome */
 }
-a.jp-pause { display: none; }
+a.jp-play:hover,
+a.jp-pause:hover,
+a.jp-stop:hover,
+a.jp-previous:hover,
+a.jp-next:hover {
+	box-shadow: 0 0 11px rgba(255, 255, 255, .75);
+	-moz-box-shadow: 0 0 11px rgba(255, 255, 255, .75);
+	-webkit-box-shadow: 0 0 11px rgba(255, 255, 255, .75);
+	behavior: url(../script/pie.htc); /* you must use absolute path */
+}
+
+a.jp-play,
+a.jp-pause { left: 35px; }
+
+a.jp-play,
+a.jp-play:hover { background: url(../image/icon-controls.png) -22px 0 no-repeat; }
+a.jp-play:hover { background: url(../image/icon-controls.png) -22px -22px no-repeat; }
+a.jp-pause,
+a.jp-pause:hover {
+	background: url(../image/icon-controls.png) -44px 0 no-repeat;
+	display: none;
+}
+a.jp-pause:hover { background: url(../image/icon-controls.png) -44px -22px no-repeat; }
+a.jp-stop,
+a.jp-stop:hover {
+	left: 60px;
+	background: url(../image/icon-controls.png) -66px 0 no-repeat;
+}
+a.jp-stop:hover { background: url(../image/icon-controls.png) -66px -22px no-repeat; }
+a.jp-previous,
+a.jp-previous:hover {
+	left: 10px;
+	background: url(../image/icon-controls.png) 0 0 no-repeat;
+}
+a.jp-previous:hover { background: url(../image/icon-controls.png) 0 -22px no-repeat; }
+a.jp-next,
+a.jp-next:hover {
+	left: 85px;
+	background: url(../image/icon-controls.png) -88px 0 no-repeat;
+}
+a.jp-next:hover { background: url(../image/icon-controls.png) -88px -22px no-repeat; }
+
 a.jp-close {
+	top: 1px;
+	left: 6px;
 	width: 24px;
 	height: 24px;
+	border-radius: 5px;
+	background: #ccc url(../image/close.png) 50% 50% no-repeat;
 }
 a.jp-close:hover { background-color: #fff; }
 
@@ -793,22 +874,23 @@ a.jp-close:hover { background-color: #fff; }
 	behavior: url(../script/pie.htc);
 }
 .jp-load-bar {
+	background: #555;
 	width: 0;
 	height: 10px;
 	cursor: pointer;
-	background: #333;
 	border-radius: 5px 0 0 5px;
 	-moz-border-radius: 5px 0 0 5px;
 	-webkit-border-radius: 5px 0 0 5px;
 	behavior: url(../script/pie.htc);
 }
-.jp-play-bar,
-.jp-volume-bar-value {
+.jp-play-bar {
+	background: #fff;
 	width: 0;
 	height: 10px;
 	border-radius: 5px 0 0 5px;
 	-moz-border-radius: 5px 0 0 5px;
 	-webkit-border-radius: 5px 0 0 5px;
+	behavior: url(../script/pie.htc);
 }
 .jp-play-time,
 .jp-total-time {
@@ -819,7 +901,7 @@ a.jp-close:hover { background-color: #fff; }
 	color: #f2f2f2;
 	line-height: 1em;
 }
-.jp-play-time { left: 117px; }
+.jp-play-time { left: 115px; }
 .jp-total-time {
 	left: 295px;
 	text-align: right;
@@ -840,8 +922,20 @@ a.jp-close:hover { background-color: #fff; }
 	-webkit-border-radius: 5px;
 	behavior: url(../script/pie.htc);
 }
+.jp-volume-bar-value {
+	background: #fff;
+	width: 0;
+	height: 10px;
+	border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+	behavior: url(../script/pie.htc);
+}
 .jp-playlist {
 	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 400px;
 	height: 26px;
 }
 .jp-playlist ul {
@@ -866,167 +960,6 @@ a.jp-close:hover { background-color: #fff; }
 	font-size: 1em;
 	line-height: 1.4em;
 }
-
-
-/* advanced player */
-section > .footer .player .jp-playlist-player { padding: 5px 0; }
-section > .footer .player .jp-interface { margin: 0 auto 5px; }
-section > .footer .player a.jp-play,
-section > .footer .player a.jp-pause,
-section > .footer .player a.jp-stop,
-section > .footer .player a.jp-previous,
-section > .footer .player a.jp-next {
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	behavior: url(../script/pie.htc); /* you must use absolute path */
-	transition: background 0.3s;
-	-o-transition: background 0.3s; /* Opera */
-	-moz-transition: background 0.3s; /* Firefox 4 */
-	-webkit-transition: background 0.3s; /* Safari and Chrome */
-}
-section > .footer .player a.jp-play,
-section > .footer .player a.jp-pause { left: 35px; }
-section > .footer .player a.jp-play { background-position: -22px 0; }
-section > .footer .player a.jp-pause { background-position: -44px 0; }
-section > .footer .player a.jp-stop {
-	left: 60px;
-	background-position: -66px 0;
-}
-section > .footer .player a.jp-previous {
-	left: 10px;
-	background-position: 0 0;
-}
-section > .footer .player a.jp-next {
-	left: 85px;
-	background-position: -88px 0;
-}
-section > .footer .player a.jp-close {
-	top: 1px;
-	left: 6px;
-	border-radius: 5px;
-	background: #ccc url(../image/close.png) 50% 50% no-repeat;
-}
-section > .footer .player a.jp-play:hover,
-section > .footer .player a.jp-pause:hover,
-section > .footer .player a.jp-stop:hover,
-section > .footer .player a.jp-previous:hover,
-section > .footer .player a.jp-next:hover {
-	box-shadow: 0 0 11px rgba(255, 255, 255, .75);
-	-moz-box-shadow: 0 0 11px rgba(255, 255, 255, .75);
-	-webkit-box-shadow: 0 0 11px rgba(255, 255, 255, .75);
-	behavior: url(../script/pie.htc); /* you must use absolute path */
-}
-a.jp-play { background-position: -22px 0; }
-a.jp-pause {
-	background-position: -44px 0;
-	display: none;
-}
-a.jp-stop { background-position: -66px 0; }
-a.jp-previous { background-position: 0 0; }
-a.jp-next { background-position: -88px 0; }
-section > .footer .player a.jp-play:hover { background-position: -22px -22px; }
-section > .footer .player a.jp-pause:hover { background-position: -44px -22px; }
-section > .footer .player a.jp-stop:hover { background-position: -66px -22px; }
-section > .footer .player a.jp-previous:hover { background-position: 0 -22px; }
-section > .footer .player a.jp-next:hover { background-position: -88px -22px; }
-section > .footer .player a.jp-close:hover { background-color: #fff; }
-section > .footer .player .jp-play-bar,
-section > .footer .player .jp-volume-bar-value {
-	background: #fff;
-	behavior: url(../script/pie.htc);
-}
-section > .footer .player .jp-playlist {
-	overflow: hidden;
-	margin: 0 auto;
-	width: 400px;
-}
-
-body > .footer .player {
-	position: absolute;
-	right: 0;
-	z-index: 3;
-	left: 270px;
-	bottom: 10px;
-	width: 650px;
-	padding: 5px;
-	overflow: hidden;
-	background: rgba(0, 0, 0, 0.75);
-	text-shadow: 0 1px 2px #000;
-	border-top: #000 solid 1px;
-	box-shadow: 0 0 25px #000;
-	-moz-box-shadow: 0 0 25px #000;
-	-webkit-box-shadow: 0 0 25px #000;
-	border-radius: 0 0 3px 3px;
-	-moz-border-radius: 0 0 3px 3px;
-	-webkit-border-radius: 0 0 3px 3px;
-}
-body > .footer .player .jp-interface { float: left; }
-body > .footer .player a.jp-play,
-body > .footer .player a.jp-pause,
-body > .footer .player a.jp-stop,
-body > .footer .player a.jp-previous,
-body > .footer .player a.jp-next {
-	margin: 0 2px;
-	border-top: #000 solid 1px;
-	border-bottom: #222 solid 1px;
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	transition: border-color 0.3s;
-	-o-transition: border-color 0.3s; /* Opera */
-	-moz-transition: border-color 0.3s; /* Firefox 4 */
-	-webkit-transition: border-color 0.3s; /* Safari and Chrome */
-}
-body > .footer .player a.jp-play,
-body > .footer .player a.jp-pause { left: 28px; }
-body > .footer .player a.jp-play { background-position: -22px -44px; }
-body > .footer .player a.jp-pause { background-position: -44px -44px; }
-body > .footer .player a.jp-stop {
-	left: 56px;
-	background-position: -66px -44px;
-}
-body > .footer .player a.jp-previous {
-	left: 0;
-	background-position: 0 -44px;
-}
-body > .footer .player a.jp-next {
-	left: 84px;
-	background-position: -88px -44px;
-}
-body > .footer .player a.jp-close {
-	top: 2px;
-	left: 413px;
-	background: #555 url(../image/close.png) 50% 50% no-repeat;
-}
-body > .footer .player a.jp-play:hover,
-body > .footer .player a.jp-pause:hover,
-body > .footer .player a.jp-stop:hover,
-body > .footer .player a.jp-previous:hover,
-body > .footer .player a.jp-next:hover {
-	border-color: #1d76c1;
-	box-shadow: 0 0 5px #1d76c1;
-	-moz-box-shadow: 0 0 5px #1d76c1;
-	-webkit-box-shadow: 0 0 5px #1d76c1;
-}
-body > .footer .player a.jp-close:hover { background-color: #999; }
-body > .footer .player .jp-play-bar,
-body > .footer .player .jp-volume-bar-value {
-	background: #b3d4fc;
-	background: -moz-linear-gradient(top, #b3d4fc, #1d76c1);
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#b3d4fc), to(#1d76c1));
-	background: -webkit-linear-gradient(top, #b3d4fc, #1d76c1);
-	background: -o-linear-gradient(top, #b3d4fc, #1d76c1);
-	background: linear-gradient(to bottom, #b3d4fc, #1d76c1);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb3d4fc', endColorstr='#ff1d76c1', GradientType=0);
-}
-body > .footer .player .jp-playlist {
-	width: 250px;
-	float: left;
-}
-/* advanced player */
-
-
 /* jplayer */
 
 

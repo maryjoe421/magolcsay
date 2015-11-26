@@ -26,16 +26,14 @@
 		$aoc = json_decode($jsonfile);
 		// usort($aoc, 'JSONcompare');
 		$projects = $aoc->projects;
-		$trackItem = 0;
 		foreach ($projects as $project) {
 			echo '<h2>' . $project->name . '</h2>
 				<ul>';
 			$tracklist = $project->tracklist;
 			foreach ($tracklist as $track) {
-				echo '<li tabindex="' . $trackItem . '"><a href="#ashes_of_cows/' . $track->link . '" title="' . $track->title . '" class="track';
+				echo '<li><a href="#' . $track->link . '" title="' . $track->title . '" class="track';
 				if ($lang == "hu") echo ' track-list';
 				echo '">' . $track->title . '</a><em>' . $track->duration . '</em></li>';
-				$trackItem++;
 			}
 			echo '</ul>';
 			if ($project->details->$langcode != "") echo '<p>' . $project->details->$langcode . '</p>';
@@ -49,3 +47,5 @@
 <?php
 	}
 ?>
+
+	<div class="footer"></div>
