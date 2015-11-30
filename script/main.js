@@ -1,17 +1,19 @@
 jQuery(function($) {
 
-	var trackPath = "file/",
-		trackContent = "ashes_of_cows",
-		trackPrefix = "#" + trackContent + "/",
-
-		langCode = window.navigator.userLanguage || window.navigator.language,
-		language = (jQuery.cookie("language") !== null) ? jQuery.cookie("language") : (langCode.length > 2) ? langCode.substring(0, 2) : langCode,
-
-		siteHash = window.location.hash,
-
+	var siteHash = window.location.hash,
 		pageHash = getHashBegin(siteHash.substr(1)),
+
+		trackPath = "file/",
+		trackContent = "ashes_of_cows",
+		trackPrefix = "#" + trackContent + "/",		
 		trackHash = getHashEnd(siteHash);
 
+
+	function getPageLang() {
+		var languageCode = window.navigator.userLanguage || window.navigator.language,
+			shortLanguageCode = (languageCode.length > 2) ? languageCode.substring(0, 2) : languageCode;
+		return (jQuery.cookie("language") !== null) ? jQuery.cookie("language") : shortLanguageCode;
+	}
 
 	function isPlaying() {
 		var playbar = jQuery("#jplayer_play_bar").css("width");
@@ -111,9 +113,9 @@ jQuery(function($) {
 	function setPanelContent(panelContent) {
 		if (jQuery("section[rel='" + panelContent + "']").find(".holder").attr("lang")) {
 			jQuery("section[rel='" + panelContent + "']").find(".holder").hide();
-			jQuery("section[rel='" + panelContent + "']").find(".holder[lang='" + language + "']").fadeIn("fast");
+			jQuery("section[rel='" + panelContent + "']").find(".holder[lang='" + getPageLang() + "']").fadeIn("fast");
 			jQuery("section[rel='" + panelContent + "']").find(".language").removeClass("active");
-			jQuery("section[rel='" + panelContent + "']").find("a[href='#" + language + "']").addClass("active");
+			jQuery("section[rel='" + panelContent + "']").find("a[href='#" + getPageLang() + "']").addClass("active");
 		}
 		initScroll(0);
 	}
@@ -214,49 +216,50 @@ jQuery(function($) {
 
 	if (window.matchMedia('(min-width: 992px)').matches) {
 		// menuitems hover
-		jQuery(".menu > a").hover(function() {
+		jQuery(".menu > li > a").hover(function() {
 			jQuery(this).parent().addClass("over");
 		}, function() {
 			jQuery(this).parent().removeClass("over");
 		});
 
 		// bio, events, contacts hover
-		jQuery("#item1 > a, #item5 > a, #item6 > a").hover(function() {
-			jQuery(this).find("> span").fadeIn("slow");
+		jQuery(".menu > #item1 > a, .menu > #item5 > a, .menu > #item6 > a").hover(function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").fadeIn("slow");
 		}, function() {
-			jQuery(this).find("> span").fadeOut("slow");
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").fadeOut("slow");
 		});
 
 		// books hover
-		jQuery("#item2 > a").hover(function() {
-			jQuery(this).find("> span").fadeIn("slow").arctext({
+		jQuery(".menu > #item2 > a").hover(function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").fadeIn("slow").arctext({
 				radius: 40,
-				dir: -1
+				dir: -1,
+				animation: 300
 			});
 		}, function() {
-			jQuery(this).find("> span").fadeOut("slow");
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").fadeOut("slow");
 		});
 
 		// publications hover
-		jQuery("#item3 > a").hover(function() {
-			jQuery(this).find("> span").show().stop().animate({"bottom": "130px"}, 1800);
+		jQuery(".menu > #item3 > a").hover(function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").show().stop().animate({"bottom": "130px"}, 1800);
 		}, function() {
-			jQuery(this).find("> span").stop().animate({"bottom": "800px"}, 1800, function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").stop().animate({"bottom": "800px"}, 1800, function() {
 				jQuery(this).hide();
 			});
 		});
 
 		// reception hover
-		jQuery("#item4 > a").hover(function() {
-			jQuery(this).find("> span").show().stop().animate({"bottom": "45px"}, 400);
+		jQuery(".menu > #item4 > a").hover(function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").show().stop().animate({"bottom": "45px"}, 400);
 		}, function() {
-			jQuery(this).find("> span").stop().animate({"bottom": "-30px"}, 400, function() {
+			jQuery(this).find("> span[lang='" + getPageLang() + "']").stop().animate({"bottom": "-30px"}, 400, function() {
 				jQuery(this).hide();
 			});
 		});
 
 		// ashes of cows hover
-		jQuery("#" + trackContent + " > a").hover(function() {
+		jQuery(".menu > #" + trackContent + " > a").hover(function() {
 			jQuery(this).find("> span").fadeIn("slow").arctext({
 				radius: 10
 			});

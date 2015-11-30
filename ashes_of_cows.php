@@ -28,7 +28,7 @@
 		$projects = $aoc->projects;
 		$trackItem = 0;
 		foreach ($projects as $project) {
-			echo '<h2>' . $project->name . '</h2>
+			echo '<h2>' . $project->name->$langcode . '</h2>
 				<ul>';
 			$tracklist = $project->tracklist;
 			foreach ($tracklist as $track) {
@@ -37,8 +37,8 @@
 				echo '">' . $track->title . '</a><em>' . $track->duration . '</em></li>';
 				$trackItem++;
 			}
-			echo '</ul>';
-			if ($project->details->$langcode != "") echo '<p>' . $project->details->$langcode . '</p>';
+			echo '</ul>
+				<p>' . $project->details->$langcode . '</p>';
 		}
 ?>
 

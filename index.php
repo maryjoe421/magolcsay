@@ -96,7 +96,12 @@
 	foreach ($editable_menuitems as $item => $name) {
 		$m++;
 		echo '
-					<li id="item' . $m . '"><a href="#' . $item . '" title="' . $item . '"><span>' . $name . '</span></a></li>';
+					<li id="item' . $m . '">
+						<a href="#' . $item . '">
+							<span lang="hu">' . $name . '</span>
+							<span lang="en">' . $item . '</span>
+						</a>
+					</li>';
 } ?>
 
 					<li id="ashes_of_cows"><a href="#ashes_of_cows" title="ashes of cows"><span>ashes of cows</span></a></li>
