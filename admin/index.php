@@ -31,10 +31,12 @@ if(isset($_GET["p"])) {
 		<link rel="stylesheet" href="../style/normalize.css">
 		<link rel="stylesheet" href="../style/main.css">
 		<link rel="stylesheet" href="../style/admin.css">
+		<link rel="stylesheet" href="../style/jquery.datetimepicker.css">
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="../script/jquery-1.8.2.min.js"><\/script>')</script>
 		<script src="../script/modernizr-2.6.2.min.js"></script>
+		<script src="../script/jquery.datetimepicker.js"></script>
 	</head>
 	<body class="admin">
 		<!--[if lt IE 7]>
@@ -63,7 +65,7 @@ if(isset($_SESSION["username"])) {
 		<script src="../script/jquery.jscrollpane.min.js"></script>
 		<script src="../script/jquery.mousewheel.js"></script>
 		<script src="../script/plugins.js"></script>
-		<script src="../script/cb_admin.js"></script>
+		<script src="script/clearbox.js"></script>
 		<script src="../script/admin.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

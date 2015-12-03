@@ -65,7 +65,14 @@ if($_SESSION["privilege"] == "user") {
 		</div>
 		<div class="row">
 			<label>Dátum:</label>
-			<input type="text" name="date" placeholder="Dátum" value="<?php echo $result_row["date"]?>" />
+			<input type="text" name="date" class="datetime-picker" placeholder="Dátum" value="<?php echo $result_row["date"]?>" />
+			<script type="text/javascript">
+			//<![CDATA[
+				$('.datetime-picker').datetimepicker({
+					format: 'Y-m-d H:i:s'
+				});
+			//]]>
+			</script>
 		</div>
 
 <?php } ?>
