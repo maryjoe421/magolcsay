@@ -1,5 +1,36 @@
 {
 	"projects": [{
+		"year": 2017,
+		"name": {
+			"hu": "Nuclear Dreams",
+			"en": "Nuclear Dreams"
+		},
+		"details": {
+			"hu": "a zenéket írta és rögzítette - MNG: gitárok, basszusgitár, zajkeltõ eszközök, triangulum, billentyūs hangszerek, szemplerek, programozás.",
+			"en": "All music written and performed by MNG (guitars, bass, noise generating device, triangulum, keyboards, samplers and programming)"
+		},
+		"tracklist": [{
+			"link": "nuclear_dream",
+			"title": "Nuclear Dream",
+			"duration": "6:19"
+		}, {
+			"link": "gummo_s_radio_(insomnia)",
+			"title": "Gummo's Radio (Insomnia)",
+			"duration": "2:23"
+		}, {
+			"link": "manatee_sequence",
+			"title": "Manatee Sequence",
+			"duration": "3:50"
+		}, {
+			"link": "photokeratitis",
+			"title": "Photokeratitis",
+			"duration": "2:48"
+		}, {
+			"link": "mitochondrial_eve",
+			"title": "Mitochondrial Eve",
+			"duration": "1:39"
+		}]
+	},{
 		"year": 2015,
 		"name": {
 			"hu": "Ego Eat Ego",
@@ -27,7 +58,7 @@
 			"duration": "4:24"
 		}]
 	},{
-		"year": 2013,
+		"year": 2014,
 		"name": {
 			"hu": "Silence Of The Second Step",
 			"en": "Silence Of The Second Step"
@@ -66,7 +97,7 @@
 			"duration": "3:00"
 		}]
 	},{
-		"year": 2011,
+		"year": 2012,
 		"name": {
 			"hu": "Nine Days On <a href=\"inner#yggdrasil_hu\" rel=\"clearbox[tnhrf=nopreview,,title=Yggdrasil]\">Yggdrasil</a> <dfn id=\"yggdrasil_hu\">A skandináv mitológiában Yggdrasil a Világfa, vagy az élet fája. A mongolok szerint a Világfa csak egy karó, és az istenek arra használják, hogy hozzákössék a lovaikat. A jakutok szerint a Fa a Föld arany köldökén emelkedik, és tövében születtek az első emberek. A tanguzok azt mondják, hogy a még meg nem született gyermekek lelkei az ágai között időznek kismadár formájában. A törökök úgy vélik, a Világfának egymillió levele van, és minden levélen egy-egy ember élete van, ha a levél lehull, az ember meghal. Odin - a skandináv mitológia főistene - az Yggdrasil-on függött dárdával átdöfve kilenc napig, hogy megtudhassa a költészet és a rúnák titkát. (Odint tudása komorrá és melankolikussá tette.)</dfn>",
 			"en": "Nine Days On <a href=\"inner#yggdrasil_en\" rel=\"clearbox[tnhrf=nopreview,,title=Yggdrasil]\">Yggdrasil</a> <dfn id=\"yggdrasil_en\">In Scandinavian mythology Yggdrasil is the World Tree, or the tree of life. According to the Mongolians the World Tree is just a simple rod which gods use to tie their horses to it. For the Jakuts the Tree grows on top of the golden belly button of the Earth and the first people were born there, at its foot. Tanguz people say that the souls of the yet unborn children pass their time among the branches in the form of little birds. The Turkish believe that the World Tree has one million leaves with someone’s life on each leaf, and if a leaf falls down the person dies. Odin, the chief god in Scandinavian mythology was hanging from Yggdrasil pierced by a spear for nine days to get to know the secrets of poetry and the runes. (His knowledge made Odin mournful and melancholic.)</dfn>"

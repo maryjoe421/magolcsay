@@ -15,7 +15,7 @@ if($_SESSION["privilege"] == "user") {
 		$fileerror = $_FILES["file"]["error"];
 		$filesize = $_FILES["file"]["size"];
 		$filetype = $_FILES["file"]["type"];
-		$allowedExts = array("gif", "jpeg", "jpg", "png", "mp3");
+		$allowedExts = array("gif", "jpg", "jpeg", "png", "mp3");
 		$mimetypes = array("image/gif", "image/jpeg", "image/jpg", "image/pjpeg", "image/x-png", "image/png", "audio/mpeg", "audio/mpeg3", "audio/x-mpeg-3", "audio/mp3");
 		$extension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -63,7 +63,7 @@ if($_SESSION["privilege"] == "user") {
 	<form action="?b=file" method="post" enctype="multipart/form-data">
 		<div class="row btn">
 			<label>Feltöltendő fájl:</label>
-			<input type="file" name="file" id="file" />
+			<input type="file" name="file" id="file" accept=".gif,.jpg,.jpeg,.png,.mp3" />
 			<input type="submit" value="Mehet" />
 		</div>
 		<div class="row captcha">

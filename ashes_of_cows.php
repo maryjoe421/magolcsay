@@ -27,13 +27,17 @@
 		// usort($aoc, 'JSONcompare');
 		$projects = $aoc->projects;
 		foreach ($projects as $project) {
-			echo '<h2>' . $project->name->$langcode . '</h2>
+			echo '<h2>' . $project->name->$langcode . ' (' . $project->year . ')</h2>
 				<ul>';
 			$tracklist = $project->tracklist;
 			foreach ($tracklist as $track) {
-				echo '<li><a href="#' . $track->link . '" title="' . $track->title . '" class="track';
-				if ($lang == "hu") echo ' track-list';
-				echo '">' . $track->title . '</a><em>' . $track->duration . '</em></li>';
+				if ($track->link != '') {
+					echo '<li><a href="#' . $track->link . '" title="' . $track->title . '" class="track';
+					if ($lang == "hu") echo ' track-list';
+					echo '">' . $track->title . '</a><em>' . $track->duration . '</em></li>';
+				} else {
+					echo '<li>' . $track->title . '<em>' . $track->duration . '</em></li>';
+				}
 			}
 			echo '</ul>
 				<p>' . $project->details->$langcode . '</p>';
