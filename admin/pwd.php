@@ -22,7 +22,7 @@ if(isset($_SESSION["username"])) {
 			echo "<p>HIBA: Nem egyezik meg a két jelszó!</p>";
 			header("refresh: 2 url=index.php?b=pwd");
 		} else {
-			$query = "UPDATE sys_user SET password='$password' WHERE id='$userid'";
+			$query = "UPDATE sys_user SET password='$password1' WHERE id='$userid'";
 			mysql_query($query);
 			header("location: index.php");
 		}
